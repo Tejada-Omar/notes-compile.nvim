@@ -61,6 +61,6 @@ require('notes-compile').compile()
 notes-compile user commands:
 
 
-| Event          | Description                                          |
-|----------------|------------------------------------------------------|
+|     Event      |                     Description                      |
+|:--------------:|:----------------------------------------------------:|
 | `CompileNotes` | Compile all markdown notes in `cwd` and open zathura |
