@@ -1,0 +1,5 @@
+*.md
+*.pdf
+
+!README.md
+!LICENSE.md
