@@ -15,9 +15,6 @@ M.setup = function (opts)
   if setup_complete then return end
   config.setup(opts)
 
-  vim.api.nvim_create_user_command('CompileNotes', M.compile,
-    {desc = 'Search in current working directory and compile notes'})
-
   setup_complete = true
 end
 
