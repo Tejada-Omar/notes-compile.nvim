@@ -15,5 +15,5 @@ jobs:
           version: "Nvim 0.8.0"
       - uses: stefanzweifel/git-auto-commit-action@v4
         with:
-          commit_message: "docs: Auto generate docs"
+          commit_message: "docs: auto generate docs"
           branch: ${{ github.head_ref }}
