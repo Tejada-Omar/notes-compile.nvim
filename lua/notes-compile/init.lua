@@ -1,13 +1,14 @@
 local config = require('notes-compile.config')
 local finder = require('notes-compile.finder')
+local processes = require('notes-compile.processes')
 
 local M = {}
 
 local setup_complete = false
 
 M.compile = function ()
-  finder.find_files(config.opt.skip)
-  finder.compile(config.opt.file_name, config.args)
+  finder.find_files(config.opt.skip) -- TODO: Memoize filenames
+  processes.run(config.opt.file_name, config.args, finder.files)
 end
 
 M.setup = function (opts)
