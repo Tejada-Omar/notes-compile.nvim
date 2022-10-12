@@ -12,6 +12,7 @@ jobs:
         uses: kdheepak/panvimdoc@main
         with:
           vimdoc: notes-compile
+          version: "Nvim 0.8.0"
       - uses: stefanzweifel/git-auto-commit-action@v4
         with:
           commit_message: "docs: Auto generate docs"
