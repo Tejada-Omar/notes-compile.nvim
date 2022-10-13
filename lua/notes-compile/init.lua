@@ -59,6 +59,10 @@ M.setup = function (opts)
   if setup_complete then return end
   config.setup(opts)
 
+  if not vim.tbl_isempty(config.opt.events) then
+    M.turnon_autocmd({fargs = config.opt.events})
+  end
+
   setup_complete = true
 end
 

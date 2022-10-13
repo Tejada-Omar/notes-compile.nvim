@@ -3,6 +3,7 @@ local M = {}
 local defaults = {
   file_name = 'master.pdf',
   skip = { 'readme.md' },
+  events = {},
   pandoc_args = {
     cmd_args = { '--toc', '-N' },
     format = {
