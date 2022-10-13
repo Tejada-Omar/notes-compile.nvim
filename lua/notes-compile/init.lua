@@ -33,6 +33,11 @@ M.toggle_autocmd = function (args)
   end
 end
 
+M.turnoff_autocmd = function ()
+  vim.api.nvim_create_augroup('notes-compile', {clear = true})
+  enabled_autocmds = {}
+end
+
 M.compile = function ()
   M.setup()
   finder.find_files(config.opt.skip)
