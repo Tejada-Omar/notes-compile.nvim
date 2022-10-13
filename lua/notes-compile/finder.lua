@@ -5,9 +5,7 @@ local M = {}
 M.files = {}
 
 M.find_files = function (skip)
-  -- TODO: Use ripgrep instead :(
   local scan = require('plenary.scandir')
-  -- files = scan.scan_dir(vim.loop.cwd(), {
   M.files = scan.scan_dir('.', {
     respect_gitignore = true,
   })

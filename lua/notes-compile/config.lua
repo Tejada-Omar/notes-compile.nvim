@@ -35,8 +35,6 @@ M.setup = function (opts)
   M.opt = require('plenary.tbl').freeze(
     vim.tbl_deep_extend('force', {}, defaults, opts or {})
   )
-  -- opts = vim.tbl_extend("keep", opts, {silent = true, buffer = true})
-  -- vim.keymap.set(mode, lhs, rhs, opts)
 
   M.get_ready_args()
 end
