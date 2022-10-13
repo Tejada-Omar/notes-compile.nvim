@@ -7,7 +7,8 @@ local M = {}
 local setup_complete = false
 local autocmd_enabled = false
 
-M.toggle_autocmd = function (event)
+M.toggle_autocmd = function (args)
+  local event = args.args or 'BufWritePost'
   if autocmd_enabled then
     vim.api.nvim_del_augroup_by_name('notes-compile')
     autocmd_enabled = false
