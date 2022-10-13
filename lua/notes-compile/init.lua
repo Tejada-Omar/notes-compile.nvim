@@ -38,6 +38,29 @@ M.turnoff_autocmd = function ()
   enabled_autocmds = {}
 end
 
+M.turnon_autocmd = function (args)
+  local events = (not vim.tbl_isempty(args.fargs)) and args.fargs or {'BufWritePost'}
+
+  vim.api.nvim_create_augroup('notes-compile', {clear = false})
+  for _, event in pairs(events) do
+    if vim.tbl_contains(vim.tbl_keys(enabled_autocmds), event) then
+      goto continue
+    end
+
+    local id = vim.api.nvim_create_autocmd(event, {
+      group = 'notes-compile',
+      buffer = 0,
+      desc = 'Begin compilation of notes on event',
+      callback = function ()
+        M.compile()
+      end
+    })
+    enabled_autocmds[event] = id
+
+    ::continue::
+  end
+end
+
 M.compile = function ()
   M.setup()
   finder.find_files(config.opt.skip)

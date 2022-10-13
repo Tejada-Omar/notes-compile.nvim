@@ -13,3 +13,8 @@ vim.api.nvim_create_user_command('CompileNotesAutoToggle', require('notes-compil
 
 vim.api.nvim_create_user_command('CompileNotesTurnOff', require('notes-compile').turnoff_autocmd,
   {desc = 'Turn off all autocmds'})
+
+vim.api.nvim_create_user_command('CompileNotesTurnOn', require('notes-compile').turnon_autocmd, {
+  nargs = '*',
+  desc = 'Turn on autocmd to begin compilation on event'
+})
