@@ -22,7 +22,7 @@ M.toggle_autocmd = function (args)
     local id = vim.api.nvim_create_autocmd(event, {
       group = 'notes-compile',
       buffer = 0,
-      desc = 'Begin autocompilation of notes',
+      desc = 'Toggle autocompilation of notes on event',
       callback = function ()
         M.compile()
       end
