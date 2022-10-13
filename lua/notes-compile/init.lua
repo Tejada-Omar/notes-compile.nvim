@@ -7,6 +7,7 @@ local M = {}
 local setup_complete = false
 -- Table in form enabled_autocmds[event] = 'related autocmd id'
 local enabled_autocmds = {}
+local augroup_name = 'notes-compile'
 
 local _change_autocmd = function (fargs, callback)
   local events = (not vim.tbl_isempty(fargs)) and fargs or {'BufWritePost'}
@@ -18,7 +19,7 @@ local _change_autocmd = function (fargs, callback)
     end
 
     local id = vim.api.nvim_create_autocmd(event, {
-      group = 'notes-compile',
+      group = augroup_name,
       buffer = 0,
       callback = function ()
         M.compile()
@@ -31,7 +32,7 @@ local _change_autocmd = function (fargs, callback)
 end
 
 M.toggle_autocmd = function (args)
-  vim.api.nvim_create_augroup('notes-compile', {clear = false})
+  vim.api.nvim_create_augroup(augroup_name, {clear = false})
   _change_autocmd(args.fargs, function (event)
     vim.api.nvim_del_autocmd(enabled_autocmds[event])
     enabled_autocmds[event] = nil
@@ -39,12 +40,12 @@ M.toggle_autocmd = function (args)
 end
 
 M.turnoff_autocmd = function ()
-  vim.api.nvim_create_augroup('notes-compile', {clear = true})
+  vim.api.nvim_create_augroup(augroup_name, {clear = true})
   enabled_autocmds = {}
 end
 
 M.turnon_autocmd = function (args)
-  vim.api.nvim_create_augroup('notes-compile', {clear = false})
+  vim.api.nvim_create_augroup(augroup_name, {clear = false})
   _change_autocmd(args.fargs, nil)
 end
 
