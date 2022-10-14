@@ -2,30 +2,30 @@ local Job = require('plenary.job')
 
 local M = {}
 
-local _compile_job = function (file_name, args, files)
+local _compile_job = function(file_name, args, files)
   return Job:new {
     command = 'pandoc',
-    args = {'-o', file_name, unpack(args), unpack(files)}
+    args = { '-o', file_name, unpack(args), unpack(files) }
   }
 end
 
-local _is_zathura_running_job = function ()
+local _is_zathura_running_job = function()
   return Job:new {
     command = 'pgrep',
-    args = {'zathura', '-c'}
+    args = { 'zathura', '-c' }
   }
 end
 
 -- TODO: Look into customizing pdf viewer
-local _open_zathura_job = function (file_name)
+local _open_zathura_job = function(file_name)
   return Job:new {
     command = 'zathura',
-    args = {file_name},
+    args = { file_name },
     detached = true
   }
 end
 
-M.run = function (file_name, args, files)
+M.run = function(file_name, args, files)
   -- TODO: Create version that doesn't open zathura for BufWritePost
   local compile_job = _compile_job(file_name, args, files)
   local is_zathura_running_job = _is_zathura_running_job()

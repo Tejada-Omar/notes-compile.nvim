@@ -14,7 +14,7 @@ local defaults = {
   }
 }
 
-M.get_ready_args = function ()
+M.get_ready_args = function()
   local args = {}
   for _, entry in pairs(M.opt.pandoc_args) do
     if type(entry) == 'string' then table.insert(args, entry) goto continue end
@@ -32,7 +32,7 @@ M.get_ready_args = function ()
   M.args = args
 end
 
-M.setup = function (opts)
+M.setup = function(opts)
   M.opt = require('plenary.tbl').freeze(
     vim.tbl_deep_extend('force', {}, defaults, opts or {})
   )
