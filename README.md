@@ -19,7 +19,7 @@ Using [packer.nvim](https://github.com/wbthomason/packer.nvim)
 ```lua
 use {
   'Tejada-Omar/notes-compile.nvim',
-  requires = {'nvim-lua/plenary.nvim'}
+  requires = { 'nvim-lua/plenary.nvim' }
 }
 ```
 
@@ -31,6 +31,7 @@ use {
 require('notes-compile').setup {
   file_name = 'master.pdf'
   skip = { 'readme.md' },
+  events = {},
   pandoc_args = {
     cmd_args = { '--toc', '-N' },
     format = {
@@ -42,25 +43,14 @@ require('notes-compile').setup {
 }
 ```
 
-### Starting notes-compile
+## User Commands
 
-```lua
-require('notes-compile').setup()
-```
-
-### Manual Compilation
-
-If you want to manually begin compiling your notes, you can do so with:
-
-```lua
-require('notes-compile').compile()
-```
-
-## Vim Commands
-
-notes-compile user commands:
+> Note that autocmds are automatically placed in augroup `notes-compile`
 
 
-|     Event      |                     Description                      |
-|:--------------:|:----------------------------------------------------:|
-| `CompileNotes` | Compile all markdown notes in `cwd` and open zathura |
+|          Event          |                            Description                            |
+|:-----------------------:|:-----------------------------------------------------------------:|
+|     `NotesCompile`      |       Compile all markdown notes in `cwd` and open zathura        |
+|  `NotesCompileToggle`   | Toggle **on/off** autocmd for event(s) (default: `BufWritePost`)  |
+| `NotesCompileToggleOn`  | Toggle **on** autocmd for event(s) (default: `BufWritePost`)      |
+| `NotesCompileToggleOff` | Toggle **off** all autocmds                                       |
