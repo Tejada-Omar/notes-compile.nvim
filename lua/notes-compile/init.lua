@@ -49,6 +49,11 @@ M.turnon_autocmd = function(args)
   _change_autocmd(args.fargs, nil)
 end
 
+M.print_attached_events = function()
+  print(augroup_name .. ' attached to following events')
+  vim.pretty_print(vim.tbl_keys(enabled_autocmds))
+end
+
 M.compile = function()
   M.setup()
   finder.find_files(config.opt.skip)
