@@ -8,6 +8,9 @@ local _compile_job = function(file_name, args, files)
   return Job:new {
     command = 'pandoc',
     args = pandoc_args,
+    on_stderr = function(error, data)
+      print(error .. '\n' .. data)
+    end,
   }
 end
 
