@@ -33,12 +33,11 @@ require('notes-compile').setup {
   skip = { 'readme.md' },
   events = {},
   pandoc_args = {
-    cmd_args = { '--toc', '-N' },
-    format = {
-      documentclass = 'extarticle',
-      margin = '1cm',
-      fontsize = '14pt'
-    }
+    '--toc',
+    '-N',
+    { '-V', 'documentclass:extarticle' },
+    { '-V', 'geometry:margin=1cm' },
+    { '-V', 'fontsize=14pt' }
   }
 }
 ```

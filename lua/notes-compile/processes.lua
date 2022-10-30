@@ -3,9 +3,11 @@ local Job = require('plenary.job')
 local M = {}
 
 local _compile_job = function(file_name, args, files)
+  local pandoc_args = vim.list_extend({'-o', file_name}, args)
+  pandoc_args = vim.list_extend(pandoc_args, files)
   return Job:new {
     command = 'pandoc',
-    args = { '-o', file_name, unpack(args), unpack(files) }
+    args = pandoc_args,
   }
 end
 

@@ -5,12 +5,11 @@ local defaults = {
   skip = { 'readme.md' },
   events = {},
   pandoc_args = {
-    cmd_args = { '--toc', '-N' },
-    format = {
-      documentclass = 'extarticle',
-      margin = '1cm',
-      fontsize = '14pt'
-    }
+    '--toc',
+    '-N',
+    { '-V', 'documentclass:extarticle' },
+    { '-V', 'geometry:margin=1cm' },
+    { '-V', 'fontsize=14pt' }
   }
 }
 
@@ -20,10 +19,8 @@ M.get_ready_args = function()
     if type(entry) == 'string' then table.insert(args, entry) goto continue end
     if type(entry) ~= 'table' then goto continue end
 
-    for key, value in pairs(entry) do
-      if type(key) == 'number' then table.insert(args, value) goto continue end
-      table.insert(args, string.format('-V %s=%s', key, value))
-      ::continue::
+    for _, value in pairs(entry) do
+      table.insert(args, value)
     end
 
     ::continue::
