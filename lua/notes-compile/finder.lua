@@ -9,16 +9,19 @@ M.find_files = function(skip)
   })
 
   M.files = vim.tbl_filter(function(f)
-    for _, entry in pairs(skip) do
-      -- TODO: Look into plenary.filetype
-      if string.find(f, '.md', -3, true) == nil then
-        return false
-      end
+    if skip == nil or vim.tbl_isempty(skip) then
+      if string.find(f, '.md', -3, true) == nil then return false end
+      return true
+    end
 
+    for _, entry in pairs(skip) do
       if f == entry then
+        return false
+      elseif string.find(f, '.md', -3, true) == nil then
         return false
       end
     end
+
     return true
   end, M.files)
 end
