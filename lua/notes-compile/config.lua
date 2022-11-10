@@ -26,7 +26,7 @@ M.get_ready_args = function()
     ::continue::
   end
 
-  M.args = args
+  M.args = require('plenary.tbl').freeze(args)
 end
 
 M.setup = function(opts)
