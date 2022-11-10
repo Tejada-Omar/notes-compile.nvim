@@ -3,21 +3,19 @@ local Job = require('plenary.job')
 local M = {}
 
 local _compile_job = function(file_name, args, files)
-  local pandoc_args = vim.list_extend({'-o', file_name}, args)
+  local pandoc_args = vim.list_extend({ '-o', file_name }, args)
   pandoc_args = vim.list_extend(pandoc_args, files)
   return Job:new {
     command = 'pandoc',
     args = pandoc_args,
-    on_stderr = function(error, data)
-      print(error .. '\n' .. data)
-    end,
+    on_stderr = function(error, data) print(error .. '\n' .. data) end,
   }
 end
 
 local _is_zathura_running_job = function()
   return Job:new {
     command = 'pgrep',
-    args = { 'zathura', '-c' }
+    args = { 'zathura', '-c' },
   }
 end
 
@@ -26,7 +24,7 @@ local _open_zathura_job = function(file_name)
   return Job:new {
     command = 'zathura',
     args = { file_name },
-    detached = true
+    detached = true,
   }
 end
 
