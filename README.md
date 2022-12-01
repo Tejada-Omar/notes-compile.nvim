@@ -29,7 +29,7 @@ use {
 
 ```lua
 require('notes-compile').setup {
-  file_name = 'master.pdf'
+  file_name = 'master.pdf',
   skip = { 'readme.md' },
   events = {},
   pandoc_args = {
