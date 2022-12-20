@@ -30,3 +30,9 @@ vim.api.nvim_create_user_command(
     desc = 'Turn on autocmd to begin compilation on event',
   }
 )
+
+vim.api.nvim_create_user_command(
+  'NotesCompileShowAttached',
+  require('notes-compile').print_attached_events,
+  { desc = 'Prints attached events' }
+)
