@@ -1,4 +1,4 @@
-*notes-compile.txt*        For Nvim 0.8.0        Last change: 2022 December 20
+*notes-compile.txt*        For Nvim 0.8.0        Last change: 2022 December 29
 
 ==============================================================================
 Table of Contents                            *notes-compile-table-of-contents*
@@ -43,7 +43,7 @@ DEFAULT CONFIGURATION ~
 
 >
     require('notes-compile').setup {
-      file_name = 'master.pdf'
+      file_name = 'master.pdf',
       skip = { 'readme.md' },
       events = {},
       pandoc_args = {
