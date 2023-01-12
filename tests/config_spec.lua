@@ -10,7 +10,8 @@ local stub = require('luassert.stub')
 --     { '-V', 'documentclass:extarticle' },
 --     { '-V', 'geometry:margin=1cm' },
 --     { '-V', 'fontsize=14pt' }
---   }
+--   },
+--   zathura_integration = false,
 -- }
 
 describe('parsing arguments', function()

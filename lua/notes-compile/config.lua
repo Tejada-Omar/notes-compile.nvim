@@ -11,6 +11,7 @@ local defaults = {
     { '-V', 'geometry:margin=1cm' },
     { '-V', 'fontsize=14pt' },
   },
+  zathura_integration = false,
 }
 
 M.get_ready_args = function()

@@ -31,14 +31,16 @@ local _open_zathura_job = function(file_name)
   }
 end
 
-M.run = function(file_name, args, files)
+M.run = function(file_name, args, files, pandoc_integration)
   -- TODO: Create version that doesn't open zathura for BufWritePost
   local compile_job = _compile_job(file_name, args, files)
   local is_zathura_running_job = _is_zathura_running_job()
   local open_zathura_job = _open_zathura_job(file_name)
 
-  compile_job:and_then_wrap(is_zathura_running_job)
-  is_zathura_running_job:and_then_on_failure_wrap(open_zathura_job)
+  if pandoc_integration == true then
+    compile_job:and_then_wrap(is_zathura_running_job)
+    is_zathura_running_job:and_then_on_failure_wrap(open_zathura_job)
+  end
 
   compile_job:start()
 end
