@@ -11,7 +11,7 @@ current working directory for markdown files and opening them in zathura
 
 - [nvim-lua/plenary.nvim](https://github.com/nvim-lua/plenary.nvim)
 - [pandoc](https://pandoc.org/)
-- [zathura](https://pwmt.org/projects/zathura/)
+- [zathura](https://pwmt.org/projects/zathura/) (optional)
 
 ### Installation
 
@@ -46,7 +46,8 @@ require('notes-compile').setup {
     { '-V', 'documentclass:extarticle' },
     { '-V', 'geometry:margin=1cm' },
     { '-V', 'fontsize=14pt' }
-  }
+  },
+  zathura_integration = false,
 }
 ```
 
