@@ -1,4 +1,4 @@
-*notes-compile.txt*         For Nvim 0.8.0        Last change: 2023 January 12
+*notes-compile.txt*         For Nvim 0.8.0        Last change: 2023 January 13
 
 ==============================================================================
 Table of Contents                            *notes-compile-table-of-contents*
@@ -23,7 +23,7 @@ DEPENDENCIES ~
 
 - nvim-lua/plenary.nvim <https://github.com/nvim-lua/plenary.nvim>
 - pandoc <https://pandoc.org/>
-- zathura <https://pwmt.org/projects/zathura/>
+- zathura <https://pwmt.org/projects/zathura/> (optional)
 
 
 INSTALLATION ~
@@ -61,7 +61,8 @@ DEFAULT CONFIGURATION ~
         { '-V', 'documentclass:extarticle' },
         { '-V', 'geometry:margin=1cm' },
         { '-V', 'fontsize=14pt' }
-      }
+      },
+      zathura_integration = false,
     }
 <
 
