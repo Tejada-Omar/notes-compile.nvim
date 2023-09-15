@@ -16,11 +16,11 @@ local _compile_job = function(file_name, args, files)
   }
 end
 
-local _is_zathura_running_job = function()
+local _is_zathura_running_job = function(file_name)
 ---@diagnostic disable-next-line: missing-fields
   return Job:new {
     command = 'pgrep',
-    args = { 'zathura', '-c' },
+    args = { '-cfx', 'zathura ' .. file_name},
   }
 end
 
@@ -37,7 +37,7 @@ end
 M.run = function(file_name, args, files, pandoc_integration)
   -- TODO: Create version that doesn't open zathura for BufWritePost
   local compile_job = _compile_job(file_name, args, files)
-  local is_zathura_running_job = _is_zathura_running_job()
+  local is_zathura_running_job = _is_zathura_running_job(file_name)
   local open_zathura_job = _open_zathura_job(file_name)
 
   if pandoc_integration == true then
