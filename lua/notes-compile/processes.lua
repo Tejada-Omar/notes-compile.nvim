@@ -5,6 +5,7 @@ local M = {}
 local _compile_job = function(file_name, args, files)
   local pandoc_args = vim.list_extend({ '-o', file_name }, args)
   pandoc_args = vim.list_extend(pandoc_args, files)
+---@diagnostic disable-next-line: missing-fields
   return Job:new {
     command = 'pandoc',
     args = pandoc_args,
@@ -16,6 +17,7 @@ local _compile_job = function(file_name, args, files)
 end
 
 local _is_zathura_running_job = function()
+---@diagnostic disable-next-line: missing-fields
   return Job:new {
     command = 'pgrep',
     args = { 'zathura', '-c' },
@@ -24,6 +26,7 @@ end
 
 -- TODO: Look into customizing pdf viewer
 local _open_zathura_job = function(file_name)
+---@diagnostic disable-next-line: missing-fields
   return Job:new {
     command = 'zathura',
     args = { file_name },
