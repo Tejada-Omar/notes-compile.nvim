@@ -21,9 +21,7 @@ M.get_ready_args = function()
       table.insert(args, entry)
       goto continue
     end
-    if type(entry) ~= 'table' then
-      goto continue
-    end
+    if type(entry) ~= 'table' then goto continue end
 
     for _, value in pairs(entry) do
       table.insert(args, value)
