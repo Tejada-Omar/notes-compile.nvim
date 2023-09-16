@@ -57,7 +57,7 @@ end
 M.compile = function()
   M.setup()
   finder.find_files(config.opt.skip)
-  processes.run(config.opt.file_name, config.args, finder.files, config.opt.pandoc_integration)
+  processes.run(config.opt.file_name, config.args, finder.files, config.opt.zathura_integration)
 end
 
 M.setup = function(opts)
