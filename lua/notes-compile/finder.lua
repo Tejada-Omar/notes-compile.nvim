@@ -23,6 +23,13 @@ M.find_files = function(skip)
       return true
     end,
   })
+
+  table.sort(M.files, function(f1, f2)
+    local function digit_len(num)
+      return ('%04d%s'):format(#num, num)
+    end
+    return f1:gsub('%d+', digit_len) < f2:gsub('%d+', digit_len)
+  end)
 end
 
 return M
