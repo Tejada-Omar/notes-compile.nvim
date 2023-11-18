@@ -56,3 +56,28 @@ describe('nothing present', function()
     assert.are.same({}, finder.files)
   end)
 end)
+
+describe('sort filenames by natural sort', function()
+  local finder = require('notes-compile.finder')
+  before_each(function()
+    local scan = mock(require('plenary.scandir'), true)
+    scan.scan_dir.returns {
+      './03/notes.md',
+      './11/notes.md',
+      './2/notes.md',
+      './1/notes.md',
+    }
+  end)
+
+  after_each(function() mock.revert(require('plenary.scandir')) end)
+
+  it('should output natural sort', function()
+    finder.find_files {}
+    assert.are.same({
+      './1/notes.md',
+      './2/notes.md',
+      './03/notes.md',
+      './11/notes.md',
+    }, finder.files)
+  end)
+end)
