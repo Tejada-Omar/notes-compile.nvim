@@ -47,7 +47,7 @@ M.run = function(file_name, args, files, zathura_integration)
   -- TODO: Create version that doesn't open zathura for BufWritePost
   local compile_job = _compile_job(file_name, args, files)
   local is_zathura_running_job =
-      _is_zathura_running_job(file_name, _get_current_pid())
+    _is_zathura_running_job(file_name, _get_current_pid())
   local open_zathura_job = _open_zathura_job(file_name)
 
   if zathura_integration == true then

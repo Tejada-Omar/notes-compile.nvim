@@ -9,7 +9,8 @@ local setup_complete = false
 local enabled_autocmds = {}
 local augroup_name = 'notes-compile'
 
-local _change_autocmd = function(fargs, callback)
+-- local _change_autocmd = function(fargs, callback)
+local function _change_autocmd(fargs, callback)
   local events = (not vim.tbl_isempty(fargs)) and fargs or { 'BufWritePost' }
 
   for _, event in pairs(events) do
@@ -21,9 +22,7 @@ local _change_autocmd = function(fargs, callback)
     local id = vim.api.nvim_create_autocmd(event, {
       group = augroup_name,
       buffer = 0,
-      callback = function()
-        M.compile()
-      end
+      callback = function() M.compile() end,
     })
     enabled_autocmds[event] = id
 
@@ -57,7 +56,12 @@ end
 M.compile = function()
   M.setup()
   finder.find_files(config.opt.skip)
-  processes.run(config.opt.file_name, config.args, finder.files, config.opt.zathura_integration)
+  processes.run(
+    config.opt.file_name,
+    config.args,
+    finder.files,
+    config.opt.zathura_integration
+  )
 end
 
 M.setup = function(opts)
@@ -65,7 +69,7 @@ M.setup = function(opts)
   config.setup(opts)
 
   if not vim.tbl_isempty(config.opt.events) then
-    M.turnon_autocmd({ fargs = config.opt.events })
+    M.turnon_autocmd { fargs = config.opt.events }
   end
 
   setup_complete = true
