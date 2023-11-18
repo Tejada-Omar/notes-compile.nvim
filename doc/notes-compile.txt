@@ -1,4 +1,4 @@
-*notes-compile.txt*        For Nvim 0.8.0       Last change: 2023 September 16
+*notes-compile.txt*        For Nvim 0.8.0        Last change: 2023 November 18
 
 ==============================================================================
 Table of Contents                            *notes-compile-table-of-contents*
